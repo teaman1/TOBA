@@ -12,7 +12,6 @@ import javax.persistence.Id;
 public class UserBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
     private String firstName;
     private String lastName;
     private String phone;
@@ -52,12 +51,6 @@ public class UserBean implements Serializable {
         password = "";
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
     
     public String getFirstName() {
         return firstName;
@@ -105,7 +98,7 @@ public class UserBean implements Serializable {
         return zipCode;
     }
     public void setZipcode(String zipcode){
-        this.city = zipcode;
+        this.city = zipCode;
     }
     
     public String getEmail() {
@@ -128,9 +121,5 @@ public class UserBean implements Serializable {
     public void setPassword(String password){
         this.password = password;
     }
-
-
-    
-    
 }
 

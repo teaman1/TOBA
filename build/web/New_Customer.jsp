@@ -60,21 +60,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="state" id="state" tabindex="1" class="form-control" placeholder="State" value="">
+                                    <input type="text" name="stateCode" id="stateCode" tabindex="1" class="form-control" placeholder="State" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="zip" id="zip" tabindex="1" class="form-control" placeholder="Zip" value="">
+                                    <input type="text" name="zipCode" id="zipCode" tabindex="1" class="form-control" placeholder="Zip" value="">
                                 </div>
 
                                 <div class="form-group">
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                 </div>
-                                <div class="form-group">
+<!--                                <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="confirmation" id="confirmation" tabindex="2" class="form-control" placeholder="Confirm Password">
-                                </div>
+                                </div>-->
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">

@@ -1,4 +1,4 @@
-package com.toba.login;
+package com.toba.resetpassword;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,15 +12,15 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/ResetPassword")
+public class ResetPassword extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public ResetPassword() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,22 +41,18 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("login-reset") !=null && request.getParameter("login-reset").equals("Reset Password")) {
-            response.sendRedirect("password_reset.jsp");
+        UserBean user = new UserBean();
+
+        HttpSession session = request.getSession();
+        user = (UserBean) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("Login_mustbe.jsp");
         } else {
-            UserBean user = new UserBean();
-            HttpSession session = request.getSession();
-            user = (UserBean) session.getAttribute("user");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                session.setAttribute("user", user);
-                response.sendRedirect("Account_activity.jsp");
-            } else {
-                session.setAttribute("user", null);
-                response.sendRedirect("Login_failure.jsp");
+            String oldpassword = request.getParameter("oldpassword");
+            String newpassword = request.getParameter("newpassword");
+            if (user.getPassword().equals(oldpassword)) {
+                user.setPassword(newpassword);
             }
         }
     }
-
 }

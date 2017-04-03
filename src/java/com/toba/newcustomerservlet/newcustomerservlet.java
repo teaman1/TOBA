@@ -46,15 +46,19 @@ public class newcustomerservlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String zip = request.getParameter("zip");
+		String stateCode = request.getParameter("stateCode");
+		String zipCode = request.getParameter("zipCode");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirmation = request.getParameter("confirmation");
-		if (firstname == null || lastname == null || phone == null || address == null || city == null || state == null
-				|| zip == null || email == null || password == null || confirmation == null || firstname.isEmpty()
-				|| lastname.isEmpty() || phone.isEmpty() || address.isEmpty() || city.isEmpty() || state.isEmpty()
-				|| zip.isEmpty() || email.isEmpty() || password.isEmpty() || confirmation.isEmpty()) {
+//		if (firstname == null || lastname == null || phone == null || address == null || city == null || stateCode == null
+//				|| zipCode == null || email == null || password == null || confirmation == null || firstname.isEmpty()
+//				|| lastname.isEmpty() || phone.isEmpty() || address.isEmpty() || city.isEmpty() || stateCode.isEmpty()
+//				|| zipCode.isEmpty() || email.isEmpty() || password.isEmpty() || confirmation.isEmpty()) {
+		if (firstname == null || lastname == null || phone == null || address == null || city == null || stateCode == null
+				|| zipCode == null || email == null || firstname.isEmpty()
+				|| lastname.isEmpty() || phone.isEmpty() || address.isEmpty() || city.isEmpty() || stateCode.isEmpty()
+				|| zipCode.isEmpty() || email.isEmpty()) {
 
 			PrintWriter out = response.getWriter();
 			out.print("<html><head>");
@@ -70,7 +74,7 @@ public class newcustomerservlet extends HttpServlet {
 			out.print("</head><body></body></html>");
 		} else {
                         UserBean user = null;
-                        user = new UserBean(firstname, lastname, phone, address, city, state, zip, email);        
+                        user = new UserBean(firstname, lastname, phone, address, city, stateCode, zipCode, email);        
                         request.getSession().setAttribute("user", user);
                         response.sendRedirect("Success.jsp");
 		}
