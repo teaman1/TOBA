@@ -1,8 +1,9 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Login</title>
-    <meta charset="UTF-8">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
@@ -16,10 +17,10 @@
 
         <div class="collapse navbar-collapse navbarCollapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="Login.html">Login</a></li>
-                <li><a href="New_Customer.html">Register</a> </li>
-                <li><a href="Transaction.html">Transaction</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li class="active"><a href="Login.jsp">Login</a></li>
+                <li><a href="New_Customer.jsp">Register</a> </li>
+                <li><a href="Transaction.jsp">Transaction</a></li>
             </ul>
         </div>
     </div>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.toba.userbean.UserBean;
 
 /**
  * Servlet implementation class newcustomerservlet
@@ -68,8 +69,10 @@ public class newcustomerservlet extends HttpServlet {
 			out.print("</div>");
 			out.print("</head><body></body></html>");
 		} else {
-
-			response.sendRedirect("Success.html");
+                        UserBean user = null;
+                        user = new UserBean(firstname, lastname, phone, address, city, state, zip, email);        
+                        request.getSession().setAttribute("user", user);
+                        response.sendRedirect("Success.jsp");
 		}
 
 	}

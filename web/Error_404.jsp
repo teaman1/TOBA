@@ -1,11 +1,9 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
@@ -18,10 +16,10 @@
 
 		<div class="collapse navbar-collapse navbarCollapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="Login.html">Login</a></li>
-				<li><a href="New_Customer.html">Register</a></li>
-				<li><a href="Transaction.html">Transaction</a></li>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="Login.jsp">Login</a></li>
+				<li><a href="New_Customer.jsp">Register</a></li>
+				<li><a href="Transaction.jsp">Transaction</a></li>
 			</ul>
 		</div>
 	</div>
