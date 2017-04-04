@@ -51,7 +51,9 @@ public class ResetPassword extends HttpServlet {
             String oldpassword = request.getParameter("oldpassword");
             String newpassword = request.getParameter("newpassword");
             if (user.getPassword().equals(oldpassword)) {
-                user.setPassword(newpassword);
+                user.setPassword(newpassword);            
+                response.sendRedirect("Success.jsp");
+                
             }
         }
     }

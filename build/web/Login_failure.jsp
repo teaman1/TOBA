@@ -1,37 +1,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Login Failed</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.css">
-</head>
+    <head>
+        <title>Login Failed</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/bootstrap.css">
+    </head>
 
-<body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-
-            <div class="navbar-brand">TODA</div>
+    <body>
+        <c:import url="header.html" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1 class="text-danger text-center">Login Failed</h1>
+                </div>
+            </div>
         </div>
-
-        <div class="collapse navbar-collapse navbarCollapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="Login.jsp">Login</a></li>
-                <li><a href="New_Customer.jsp">Register</a></li>
-                <li><a href="Transaction.jsp">Transaction</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h1 class="text-danger text-center">Login Failed</h1>
-        </div>
-    </div>
-</div>
-
-</body>
+        <c:import url="footer.jsp" />
+    </body>
 </html>
