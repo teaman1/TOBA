@@ -14,11 +14,3 @@
 </div>
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.js"></script>
-
-    <script type="text/javascript">
-    jQuery(document).ready(function($){
-        var url = window.location.href;
-        $('.nav a[href="'+url+'"]').parent().addClass('active');
-    });
-</script>
-
