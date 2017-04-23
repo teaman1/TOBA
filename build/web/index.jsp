@@ -9,6 +9,7 @@
     </head>
     <body>
         <c:import url="header.html" />
+       
         <c:import url="footer.jsp" />
     </body>
 </html>
