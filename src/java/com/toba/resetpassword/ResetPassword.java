@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.toba.userbean.UserBean;
 import javax.servlet.http.HttpSession;
-
+import data.UserDB;
 /**
  * Servlet implementation class LoginServlet
  */
@@ -52,6 +52,7 @@ public class ResetPassword extends HttpServlet {
             String newpassword = request.getParameter("newpassword");
             if (user.getPassword().equals(oldpassword)) {
                 user.setPassword(newpassword);            
+                UserDB.update(user);
                 response.sendRedirect("Success.jsp");
                 
             }
