@@ -8,18 +8,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 
-import com.toba.account.account;
-import com.toba.transactionservlet.TransactionServlet;
-import java.io.Serializable;
+import com.toba.account.Account;
+import com.toba.account.Transaction;
 import java.util.List;
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 /**
  *
  * @author Will Crowe
  */
 public class AccountDB {
-     public static void insert(account account){
+     public static void insert(Account account){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -34,16 +32,16 @@ public class AccountDB {
         }
     }
     
-        public static List<com.toba.transactionservlet.TransactionServlet> AllTransactions (account account) {
+        public static List<Transaction> AllTransactions (Account account) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        TypedQuery<TransactionServlet> q = em.createQuery("SELECT t FROM Transaction t WHERE t.source = :account OR t.dest = :account". Transaction.class);
+        TypedQuery<Transaction> q = em.createQuery("SELECT t FROM Transaction t WHERE t.source = :account OR t.dest = :account", Transaction.class);
         q.setParameter("account", account);
         try {
-            List<TransactionServlet> transList = q.getResultList();
-            if(transList == null || transList.isEmpty()) {
+            List<Transaction> transactions = q.getResultList();
+            if(transactions == null || transactions.isEmpty()) {
                 return null;
             } else {
-                return transList;
+                return transactions;
             }
         } finally {
             em.close();

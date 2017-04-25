@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.toba.userbean.UserBean;
 import data.UserDB;
-import com.toba.account.account;
+import com.toba.account.Account;
 import data.AccountDB;
 
 @WebServlet("/newcustomerservlet")
@@ -78,8 +78,8 @@ public class newcustomerservlet extends HttpServlet {
             user = new UserBean(firstname, lastname, phone, address, city, stateCode, zipCode, email);
             UserDB.insert(user);
 
-            account savings = new account(account.Type.SAVINGS, 25.00, user);
-            account checking = new account(account.Type.CHECKING, 0.00, user);
+            Account savings = new Account(Account.Type.SAVINGS, 25.00, user);
+            Account checking = new Account(Account.Type.CHECKING, 0.00, user);
             AccountDB.insert(savings);
             AccountDB.insert(checking);
     
