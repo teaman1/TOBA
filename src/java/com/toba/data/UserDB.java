@@ -1,4 +1,4 @@
-package data;
+package com.toba.data;
 import java.sql.*;
 
 import javax.persistence.EntityManager;

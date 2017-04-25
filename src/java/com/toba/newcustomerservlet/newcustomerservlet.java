@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.toba.userbean.UserBean;
-import data.UserDB;
+import com.toba.data.UserDB;
 import com.toba.account.Account;
-import data.AccountDB;
+import com.toba.data.AccountDB;
 
 @WebServlet("/newcustomerservlet")
 public class newcustomerservlet extends HttpServlet {

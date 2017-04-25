@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.toba.userbean.UserBean;
 import javax.servlet.http.HttpSession;
-import data.UserDB;
+import com.toba.data.UserDB;
 /**
  * Servlet implementation class LoginServlet
  */

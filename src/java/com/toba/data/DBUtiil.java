@@ -1,4 +1,4 @@
-package data;
+package com.toba.data;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
