@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.userbean.UserBean;
+import com.toba.entities.User;
 import javax.servlet.http.HttpSession;
 import com.toba.data.UserDB;
 /**
@@ -41,10 +41,10 @@ public class ResetPassword extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserBean user = new UserBean();
+        User user = new User();
 
         HttpSession session = request.getSession();
-        user = (UserBean) session.getAttribute("user");
+        user = (User) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("Login_mustbe.jsp");
         } else {

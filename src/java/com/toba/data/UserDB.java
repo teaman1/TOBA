@@ -8,12 +8,12 @@ import javax.persistence.TypedQuery;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import com.toba.userbean.UserBean;
+import com.toba.entities.User;
  
 
 public class UserDB {
 
-        public static void insert(UserBean  user){
+        public static void insert(User  user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -28,7 +28,7 @@ public class UserDB {
         }
     }
     
-    public static void update(UserBean user){
+    public static void update(User user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();

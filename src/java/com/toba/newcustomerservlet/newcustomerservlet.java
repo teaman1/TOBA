@@ -8,9 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.userbean.UserBean;
+import com.toba.entities.User;
 import com.toba.data.UserDB;
-import com.toba.account.Account;
+import com.toba.entities.Account;
 import com.toba.data.AccountDB;
 
 @WebServlet("/newcustomerservlet")
@@ -74,14 +74,21 @@ public class newcustomerservlet extends HttpServlet {
             out.print("</div>");
             out.print("</head><body></body></html>");
         } else {
-            UserBean user = null;
-            user = new UserBean(firstname, lastname, phone, address, city, stateCode, zipCode, email);
+        
+          //  User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String userName, String password)
+            User user = new User(0L, firstname, lastname, phone, address, city, stateCode, zipCode, email, lastname + zipCode, "welcome1");
+     try{
             UserDB.insert(user);
+     }
+     catch(Exception ex)
+     {
+         String error = ex.getMessage();
+     }
 
-            Account savings = new Account(Account.Type.SAVINGS, 25.00, user);
-            Account checking = new Account(Account.Type.CHECKING, 0.00, user);
-            AccountDB.insert(savings);
-            AccountDB.insert(checking);
+//            Account savings = new Account(Account.AccountType.SAVINGS, 25.00, user.);
+//            Account checking = new Account(Account.AccountType.CHECKING, 0.00, user);
+//            AccountDB.insert(savings);
+//            AccountDB.insert(checking);
     
             request.getSession().setAttribute("user", user);
             response.sendRedirect("Success.jsp");

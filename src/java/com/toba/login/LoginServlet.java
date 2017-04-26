@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.userbean.UserBean;
+import com.toba.entities.User;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -44,12 +44,12 @@ public class LoginServlet extends HttpServlet {
         if (request.getParameter("login-reset") !=null && request.getParameter("login-reset").equals("Reset Password")) {
             response.sendRedirect("password_reset.jsp");
         } else {
-            UserBean user = new UserBean();
+            User user = new User();
             HttpSession session = request.getSession();
-            user = (UserBean) session.getAttribute("user");
+            user = (User) session.getAttribute("user");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+            if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {
                 session.setAttribute("user", user);
                 response.sendRedirect("Account_activity.jsp");
             } else {
