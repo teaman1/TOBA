@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/java/com/toba/newcustomerservlet/newcustomerservlet.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>84</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/transactionservlet/TransactionServlet.java</file>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/account/Transaction.java</file>
-            <file>file:/C:/newdev/TOBA/web/New_Customer.jsp</file>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/account/Account.java</file>
-            <file>file:/C:/newdev/TOBA/web/Account_activity.jsp</file>
-            <file>file:/C:/newdev/TOBA/src/java/data/AccountDB.java</file>
-            <file>file:/C:/newdev/TOBA/web/Transaction.jsp</file>
+            <file>file:/C:/newdev/TOBA/src/java/com/toba/data/DBUtiil.java</file>
             <file>file:/C:/newdev/TOBA/src/java/com/toba/newcustomerservlet/newcustomerservlet.java</file>
+            <file>file:/C:/newdev/TOBA/src/conf/persistence.xml</file>
+            <file>file:/C:/newdev/TOBA/src/java/com/toba/data/UserDB.java</file>
         </group>
     </open-files>
 </project-private>
