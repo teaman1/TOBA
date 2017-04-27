@@ -85,10 +85,10 @@ public class newcustomerservlet extends HttpServlet {
          String error = ex.getMessage();
      }
 
-//            Account savings = new Account(Account.AccountType.SAVINGS, 25.00, user.);
-//            Account checking = new Account(Account.AccountType.CHECKING, 0.00, user);
-//            AccountDB.insert(savings);
-//            AccountDB.insert(checking);
+            Account savings = new Account(Account.AccountType.SAVINGS, 25.00, user.);
+            Account checking = new Account(Account.AccountType.CHECKING, 0.00, user);
+            AccountDB.insert(savings);
+            AccountDB.insert(checking);
     
             request.getSession().setAttribute("user", user);
             response.sendRedirect("Success.jsp");
