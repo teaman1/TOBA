@@ -22,10 +22,7 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Will Crowe
- */
+
 @Entity
 @XmlRootElement
 @NamedQueries({
