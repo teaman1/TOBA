@@ -12,10 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/data/DBUtiil.java</file>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/newcustomerservlet/newcustomerservlet.java</file>
-            <file>file:/C:/newdev/TOBA/src/conf/persistence.xml</file>
-            <file>file:/C:/newdev/TOBA/src/java/com/toba/data/UserDB.java</file>
+            <file>file:/C:/newdev/TOBA/web/Transaction.jsp</file>
+            <file>file:/C:/newdev/TOBA/web/Account_activity.jsp</file>
         </group>
     </open-files>
 </project-private>

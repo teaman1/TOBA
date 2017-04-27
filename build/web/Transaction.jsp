@@ -11,33 +11,41 @@
         <c:import url="header.html" />
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                   
-                       
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form id="register-form" action="transaction" method="post" role="form" style="display: block;">
-                                        <div class="row">
-                                        <div class="form-group">
-                                            <p>Savings balanse: ${savings.balance}</p>
-                                        </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-sm-offset-3">
-                                                   <p>Checking balanse: ${checking.balance}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                <div class="col-md-12 col-md-offset-3">
+                    <h1>Transfer Funds</h1>
+                    <p>Please enter in the amount of funds to transfer.</p>
+
+                    <form action="TransactionServlet" method="post">
+                        <input type="hidden" name="action" value="transferFunds">
+                        <div class="form-group">
+                            <p>Checking:  ${user.checkingBalance}</p>
+                            <p>Savings:  ${user.savingsBalance}</p>
+
+                            <div class="form-group form-inline">
+                                Transfer from:
+                                <select name="transferFrom" class="form-control">
+                                    <option value="checking">Checking</option>
+                                    <option value="savings">Savings</option>
+                                </select>
+                                Transfer to:
+                                <select name="transferTo" class="form-control">
+                                    <option value="checking">Checking</option>
+                                    <option value="savings">Savings</option>
+                                </select>
+                                <label class="sr-only" for="transferAmount">Amount (in dollars)</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input type="text" class="form-control" name="transferAmount" placeholder="Amount">
+                                    <div class="input-group-addon">.00</div>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-primary">Transfer cash</button><br><br>
+                            </form>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <c:import url="footer.jsp" />
-    </body>
+
+<c:import url="footer.jsp" />
+</body>
 </html>

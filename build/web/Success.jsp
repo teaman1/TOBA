@@ -40,11 +40,11 @@
          </div>
          <div class="form-group">           
             <label>State:</label>
-            <span>${user.state}</span>
+            <span>${user.stateCode}</span>
          </div>
          <div class="form-group">           
             <label>Zip Code:</label>
-            <span>${user.zipcode}</span>
+            <span>${user.zipCode}</span>
          </div>
          <div class="form-group">           
             <label>Email:</label>
@@ -52,7 +52,7 @@
          </div>
          <div class="form-group">           
             <label>Username:</label>
-            <span>${user.username}</span>
+            <span>${user.userName}</span>
          </div>
          <div class="form-group">
             <label>Password:</label>
