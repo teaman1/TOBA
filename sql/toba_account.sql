@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: toba
+-- Host: 127.0.0.1    Database: toba
 -- ------------------------------------------------------
 -- Server version	5.7.14
 
@@ -25,22 +25,13 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `accountId` bigint(20) NOT NULL AUTO_INCREMENT,
   `balance` double NOT NULL,
-  `transactionType` varchar(10) NOT NULL,
+  `accountType` varchar(10) NOT NULL,
   `userId` bigint(20) NOT NULL,
   PRIMARY KEY (`accountId`),
   KEY `fk_account_user1_idx` (`userId`),
   CONSTRAINT `fk_account_user1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `account`
---
-
-LOCK TABLES `account` WRITE;
-/*!40000 ALTER TABLE `account` DISABLE KEYS */;
-/*!40000 ALTER TABLE `account` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -51,4 +42,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-25 23:55:42
+-- Dump completed on 2017-04-27 23:19:19
