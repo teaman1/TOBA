@@ -1,5 +1,9 @@
 package com.toba.newcustomerservlet;
 
+import com.toba.data.AccountDB;
+import com.toba.data.UserDB;
+import com.toba.entities.Account;
+import com.toba.entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -8,10 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.entities.User;
-import com.toba.data.UserDB;
-import com.toba.entities.Account;
-import com.toba.data.AccountDB;
+import com.toba.userbean.UserBean;
 
 @WebServlet("/newcustomerservlet")
 public class newcustomerservlet extends HttpServlet {
@@ -74,24 +75,26 @@ public class newcustomerservlet extends HttpServlet {
             out.print("</div>");
             out.print("</head><body></body></html>");
         } else {
-        
-          //  User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String userName, String password)
-            User user = new User(0L, firstname, lastname, phone, address, city, stateCode, zipCode, email, lastname + zipCode, "welcome1");
-     try{
-            UserDB.insert(user);
-     }
-     catch(Exception ex)
-     {
-         String error = ex.getMessage();
-     }
+            User user = null;
+            String username = lastname + zipCode;
+            //    public User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String userName, String password, String email) {
 
-            Account savings = new Account(Account.AccountType.SAVINGS, 25.00, user.);
-            Account checking = new Account(Account.AccountType.CHECKING, 0.00, user);
-            AccountDB.insert(savings);
-            AccountDB.insert(checking);
-    
-            request.getSession().setAttribute("user", user);
-            response.sendRedirect("Success.jsp");
+            user = new User(0L, firstname, lastname, phone, address, city, stateCode, zipCode, username, "welcome1", email);
+            try {
+                user =  UserDB.insert(user);
+                request.getSession().setAttribute("user", user);
+                
+                Account savings = new Account(0L, 25.00, Account.AccountType.SAVINGS, user);
+                savings = AccountDB.insert(savings);    
+                savings.Credit(25.00);
+                Account checking = new Account(0L, 0.00, Account.AccountType.CHECKING, user);
+                checking = AccountDB.insert(checking);
+                checking.Credit(0.00);
+               
+                response.sendRedirect("Success.jsp");
+            } catch (Exception e) {
+            }
+
         }
 
     }

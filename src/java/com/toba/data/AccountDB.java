@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.toba.data;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -12,12 +7,10 @@ import com.toba.entities.Account;
 import com.toba.entities.Transaction;
 import java.util.List;
 import javax.persistence.TypedQuery;
-/**
- *
- * @author Will Crowe
- */
+
+
 public class AccountDB {
-     public static void insert(Account account){
+     public static Account insert(Account account){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -30,6 +23,7 @@ public class AccountDB {
         }finally{
             em.close();
         }
+        return account;
     }
     
         public static List<com.toba.entities.Transaction> AllTransactions (Account account) {

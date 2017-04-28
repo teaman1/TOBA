@@ -13,26 +13,30 @@ import com.toba.entities.User;
 
 public class UserDB {
 
-        public static void insert(User  user){
+        public static User insert(User  user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
+        
         try{
             em.persist(user);
             trans.commit();
+          
         }catch(Exception e){
             System.out.println(e);
             trans.rollback();
         }finally{
             em.close();
         }
+          return user;
     }
     
-    public static void update(User user){
+    public static User update(User user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
         try{
+          
             em.merge(user);
             trans.commit();
         }catch(Exception e){
@@ -41,6 +45,7 @@ public class UserDB {
         }finally{
             em.close();
         }
+        return user;
     }
 
 }

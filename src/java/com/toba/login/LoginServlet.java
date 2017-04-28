@@ -1,12 +1,13 @@
 package com.toba.login;
 
+import com.toba.entities.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.entities.User;
+import com.toba.userbean.UserBean;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -44,9 +45,9 @@ public class LoginServlet extends HttpServlet {
         if (request.getParameter("login-reset") !=null && request.getParameter("login-reset").equals("Reset Password")) {
             response.sendRedirect("password_reset.jsp");
         } else {
-            User user = new User();
+ 
             HttpSession session = request.getSession();
-            user = (User) session.getAttribute("user");
+            User user = (User) session.getAttribute("user");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             if (username.equals(user.getUserName()) && password.equals(user.getPassword())) {

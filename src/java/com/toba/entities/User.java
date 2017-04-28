@@ -10,7 +10,6 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByStateCode", query = "SELECT u FROM User u WHERE u.stateCode = :stateCode")
     , @NamedQuery(name = "User.findByZipCode", query = "SELECT u FROM User u WHERE u.zipCode = :zipCode")
     , @NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User u WHERE u.userName = :userName")
-    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+    , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
+    , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,12 +60,11 @@ public class User implements Serializable {
     @Basic(optional = false)
     private String zipCode;
     @Basic(optional = false)
-    private String email;
-    @Basic(optional = false)
     private String userName;
     @Basic(optional = false)
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
+    private String email;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Account> accountCollection;
 
     public User() {
@@ -75,7 +74,7 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String email, String userName, String password) {
+    public User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String userName, String password, String email) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -84,9 +83,9 @@ public class User implements Serializable {
         this.city = city;
         this.stateCode = stateCode;
         this.zipCode = zipCode;
-        this.email = email;
         this.userName = userName;
         this.password = password;
+        this.email = email;
     }
 
     public Long getUserId() {
@@ -153,14 +152,6 @@ public class User implements Serializable {
         this.zipCode = zipCode;
     }
 
-   public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -175,6 +166,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @XmlTransient
@@ -210,5 +209,9 @@ public class User implements Serializable {
     public String toString() {
         return "com.toba.entities.User[ userId=" + userId + " ]";
     }
-    
+
+    public Account getAccount(Account.AccountType accountType) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

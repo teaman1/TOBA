@@ -1,14 +1,16 @@
 package com.toba.resetpassword;
 
+import com.toba.data.UserDB;
+import com.toba.entities.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.toba.entities.User;
+import com.toba.userbean.UserBean;
 import javax.servlet.http.HttpSession;
-import com.toba.data.UserDB;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -51,8 +53,9 @@ public class ResetPassword extends HttpServlet {
             String oldpassword = request.getParameter("oldpassword");
             String newpassword = request.getParameter("newpassword");
             if (user.getPassword().equals(oldpassword)) {
-                user.setPassword(newpassword);            
-                UserDB.update(user);
+                user.setPassword(newpassword); 
+                user =  UserDB.update(user);
+                request.getSession().setAttribute("user", user);
                 response.sendRedirect("Success.jsp");
                 
             }

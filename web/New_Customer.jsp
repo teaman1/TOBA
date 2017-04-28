@@ -22,7 +22,7 @@
                             <hr>
                         </div>
                         <div class="panel-body">
-                            <div class="row center-block">
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <form id="register-form" action="newcustomerservlet" method="post" role="form" style="display: block;">
                                         <div class="form-group">

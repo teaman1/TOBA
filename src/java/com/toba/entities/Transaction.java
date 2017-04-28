@@ -9,7 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,33 +22,36 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Will Crowe
- */
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Trransaction.findAll", query = "SELECT t FROM Trransaction t")
-    , @NamedQuery(name = "Trransaction.findByTransactionId", query = "SELECT t FROM Trransaction t WHERE t.transactionId = :transactionId")
-    , @NamedQuery(name = "Trransaction.findByTransactionAmt", query = "SELECT t FROM Trransaction t WHERE t.transactionAmt = :transactionAmt")
-    , @NamedQuery(name = "Trransaction.findByTransactionDate", query = "SELECT t FROM Trransaction t WHERE t.transactionDate = :transactionDate")
-    , @NamedQuery(name = "Trransaction.findByTransactionType", query = "SELECT t FROM Trransaction t WHERE t.transactionType = :transactionType")})
+    @NamedQuery(name = "Transaction.findAll", query = "SELECT t FROM Transaction t")
+    , @NamedQuery(name = "Transaction.findByTransactionId", query = "SELECT t FROM Transaction t WHERE t.transactionId = :transactionId")
+    , @NamedQuery(name = "Transaction.findByTransactionAmt", query = "SELECT t FROM Transaction t WHERE t.transactionAmt = :transactionAmt")
+    , @NamedQuery(name = "Transaction.findByTransactionDate", query = "SELECT t FROM Transaction t WHERE t.transactionDate = :transactionDate")
+    , @NamedQuery(name = "Transaction.findByTransactionType", query = "SELECT t FROM Transaction t WHERE t.transactionType = :transactionType")})
 public class Transaction implements Serializable {
 
+    public enum TransactionTypes {
+        CREDIT,
+        DEBIT,
+        TRANSFER
+    }
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Long transactionId;
     @Basic(optional = false)
-    private long transactionAmt;
+    private double transactionAmt;
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactionDate;
-    private String transactionType;
+    @Enumerated(EnumType.STRING)
+    private TransactionTypes transactionType;
     @JoinColumn(name = "accountId", referencedColumnName = "accountId")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Account accountId;
 
     public Transaction() {
@@ -57,10 +61,12 @@ public class Transaction implements Serializable {
         this.transactionId = transactionId;
     }
 
-    public Transaction(Long transactionId, long transactionAmt, Date transactionDate) {
+    public Transaction(Long transactionId, double transactionAmt, Date transactionDate, TransactionTypes transactionType, Account accountid) {
         this.transactionId = transactionId;
         this.transactionAmt = transactionAmt;
         this.transactionDate = transactionDate;
+        this.transactionType = transactionType; 
+        this.accountId = accountid;
     }
 
     public Long getTransactionId() {
@@ -71,11 +77,11 @@ public class Transaction implements Serializable {
         this.transactionId = transactionId;
     }
 
-    public long getTransactionAmt() {
+    public double getTransactionAmt() {
         return transactionAmt;
     }
 
-    public void setTransactionAmt(long transactionAmt) {
+    public void setTransactionAmt(double transactionAmt) {
         this.transactionAmt = transactionAmt;
     }
 
@@ -87,11 +93,11 @@ public class Transaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    public String getTransactionType() {
+    public TransactionTypes getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(String transactionType) {
+    public void setTransactionType(TransactionTypes transactionType) {
         this.transactionType = transactionType;
     }
 
@@ -102,7 +108,14 @@ public class Transaction implements Serializable {
     public void setAccountId(Account accountId) {
         this.accountId = accountId;
     }
+    
+    
+    public Transaction(double amt, TransactionTypes type) {
+        this.transactionAmt = amt;
+        this.transactionType = type;
+    }
 
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -125,7 +138,7 @@ public class Transaction implements Serializable {
 
     @Override
     public String toString() {
-        return "com.toba.entities.Trransaction[ transactionId=" + transactionId + " ]";
+        return "com.toba.entities.Transaction[ transactionId=" + transactionId + " ]";
     }
     
 }

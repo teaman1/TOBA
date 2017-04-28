@@ -14,11 +14,3 @@
 </div>
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/bootstrap.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".nav a").on("click", function () {
-            $(".nav").find(".active").removeClass("active");
-            $(this).parent().addClass("active");
-        });
-    });
-</script>
