@@ -14,12 +14,11 @@
                 <div class="col-md-12 col-md-offset-3">
                     <h1>Transfer Funds</h1>
                     <p>Please enter in the amount of funds to transfer.</p>
-
-                    <form action="TransactionServlet" method="post">
+                 <form action="TransactionServlet" method="post">
                         <input type="hidden" name="action" value="transferFunds">
                         <div class="form-group">
-                            <p>Checking:  ${user.checkingBalance}</p>
-                            <p>Savings:  ${user.savingsBalance}</p>
+                            <!--<p>Checking:  ${request.getSession("user").getCheckingBalance()}</p>-->
+                            <p>Savings:  ${user.CheckingBalance}</p>
 
                             <div class="form-group form-inline">
                                 Transfer from:

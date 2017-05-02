@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +21,6 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author Will Crowe
- */
 @Entity
 @XmlRootElement
 @NamedQueries({
@@ -64,9 +62,12 @@ public class User implements Serializable {
     @Basic(optional = false)
     private String password;
     private String email;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Account> accountCollection;
+    private String salt;
 
+    
+    
     public User() {
     }
 
@@ -88,6 +89,15 @@ public class User implements Serializable {
         this.email = email;
     }
 
+  public String getCheckingBalance(){
+        Account checking = this.getAccount(Account.AccountType.CHECKING);
+        return checking.getBalanceCurrencyFormat();
+    }
+    
+    public String getSavingsBalance(){
+        Account savings = this.getAccount(Account.AccountType.SAVINGS);
+        return savings.getBalanceCurrencyFormat();
+    }
     public Long getUserId() {
         return userId;
     }
@@ -175,43 +185,11 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @XmlTransient
-    public Collection<Account> getAccountCollection() {
-        return accountCollection;
-    }
-
-    public void setAccountCollection(Collection<Account> accountCollection) {
-        this.accountCollection = accountCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userId != null ? userId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.toba.entities.User[ userId=" + userId + " ]";
-    }
+    
 
     public Account getAccount(Account.AccountType accountType) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   }
 
-}
+  

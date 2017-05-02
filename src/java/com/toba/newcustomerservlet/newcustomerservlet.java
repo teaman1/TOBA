@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.toba.userbean.UserBean;
+import javax.servlet.http.HttpSession;
+import com.toba.password.PasswordUtil.PasswordUtil;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet("/newcustomerservlet")
 public class newcustomerservlet extends HttpServlet {
@@ -76,23 +79,31 @@ public class newcustomerservlet extends HttpServlet {
             out.print("</head><body></body></html>");
         } else {
             User user = null;
+                String hashedPassword;
+                String salt = "";
+                String saltedAndHashedPassword;
+                salt = PasswordUtil.getSalt();
+                saltedAndHashedPassword = com.toba.password.PasswordUtil.PasswordUtil.getSalt();
+
+                user.setPassword(saltedAndHashedPassword);
             String username = lastname + zipCode;
             //    public User(Long userId, String firstName, String lastName, String phone, String address, String city, String stateCode, String zipCode, String userName, String password, String email) {
 
             user = new User(0L, firstname, lastname, phone, address, city, stateCode, zipCode, username, "welcome1", email);
             try {
                 user =  UserDB.insert(user);
-                request.getSession().setAttribute("user", user);
-                
                 Account savings = new Account(0L, 25.00, Account.AccountType.SAVINGS, user);
                 savings = AccountDB.insert(savings);    
-                savings.Credit(25.00);
+                
+               
                 Account checking = new Account(0L, 0.00, Account.AccountType.CHECKING, user);
                 checking = AccountDB.insert(checking);
-                checking.Credit(0.00);
-               
+
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 response.sendRedirect("Success.jsp");
             } catch (Exception e) {
+                throw e;
             }
 
         }

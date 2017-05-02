@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.toba.entities;
 
 import com.toba.data.TransactionDB;
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Date;
@@ -15,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +53,7 @@ public class Account implements Serializable {
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     @ManyToOne(optional = false)
     private User userId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "accountId")
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountId")
     private Collection<Transaction> transactionCollection;
 
     public Account() {
@@ -72,7 +69,7 @@ public class Account implements Serializable {
         this.accountType = accountType;
         this.userId = userId;
     }
-
+ 
     public void Credit(double money) {
         balance += money;
         Date now = new Date();
@@ -99,6 +96,12 @@ public class Account implements Serializable {
         return balance;
     }
 
+   
+    public String getBalanceCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(this.getBalance());
+    }
+    
     public void setBalance(double balance) {
         this.balance = balance;
     }
