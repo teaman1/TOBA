@@ -9,19 +9,11 @@
     </head>
 
     <body>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <div class="container">
+                <c:import url="header.html" />
+          <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-login">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="New_Customer.html" class="active" id="login-form-link">Register Instead</a>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
+                    <div class="panel panel-changepass">
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">

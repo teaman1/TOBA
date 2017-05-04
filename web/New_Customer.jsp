@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.toba.data.UserDB" %>
+
 <html lang="en">
     <head>
         <title>Register</title>
@@ -25,6 +27,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form id="register-form" action="newcustomerservlet" method="post" role="form" style="display: block;">
+                                
+                                        <div class="form-group">
+                                            <h2 class="text-danger"><c:out default="" value="${UserDB.geterrorMessage()}"></c:out></h2>                                        
+                                        </div>    
+
                                         <div class="form-group">
                                             <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
                                         </div>

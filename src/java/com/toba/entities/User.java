@@ -62,9 +62,9 @@ public class User implements Serializable {
     @Basic(optional = false)
     private String password;
     private String email;
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Collection<Account> accountCollection;
-    private String salt;
+   
 
     
     
@@ -142,6 +142,11 @@ public class User implements Serializable {
         return city;
     }
 
+    public Collection<Account> getAccountCollection(){
+        return this.accountCollection;
+    }
+
+    
     public void setCity(String city) {
         this.city = city;
     }
@@ -186,7 +191,7 @@ public class User implements Serializable {
         this.email = email;
     }
     
-
+   
     public Account getAccount(Account.AccountType accountType) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

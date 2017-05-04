@@ -21,11 +21,11 @@
         <error-code>404</error-code>
         <location>/Error_404.jsp</location>
     </error-page>
-    <error-page>
+<!--    <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/Error_java.jsp</location>
     </error-page>
-    <!-- Restrict access to all files in the /admin folder -->
+     Restrict access to all files in the /admin folder -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>

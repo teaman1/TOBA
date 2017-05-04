@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="TOBA:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/TOBA_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TOBA/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
